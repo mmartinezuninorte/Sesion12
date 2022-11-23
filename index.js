@@ -18,4 +18,8 @@ const io = socketIO(server)
 
 io.on('connection', (socket)=>{
     console.log('Nuevo usuario conectado ', socket.id)
+
+    socket.on('chatmensaje',(data)=>{
+        io.sockets.emit('mensajeServidor',(data))
+    })
 })
