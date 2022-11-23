@@ -8,5 +8,14 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.set('port', 8012)
 
 const server = app.listen(app.get('port'),()=>{
-    console.log('Server levantado en el puerto ', app.get('port'))
+    console.log('Server iniciado en el puerto ', app.get('port'))
+})
+
+//--------------------------------------------------
+// Socket.io
+const socketIO = require('socket.io')
+const io = socketIO(server)
+
+io.on('connection', (socket)=>{
+    console.log('Nuevo usuario conectado ', socket.id)
 })
