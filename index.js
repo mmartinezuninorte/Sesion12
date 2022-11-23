@@ -22,4 +22,8 @@ io.on('connection', (socket)=>{
     socket.on('chatmensaje',(data)=>{
         io.sockets.emit('mensajeServidor',(data))
     })
+
+    socket.on('typing',(data)=>{
+        socket.broadcast.emit('typingServidor',data)
+    })
 })
